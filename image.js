@@ -2,7 +2,7 @@ const body = document.querySelector("body"), //Concatenate the constant body to 
   postList = document.querySelector(".js-postList"), //Concatenate the postList body to the element .js-postList.
   imgHeight = 400, //Set post Height.
   imgWidth = imgHeight; //Set post Width.
-let postSum = 3; //Count of Posts.
+let postSum = 9; //Count of Posts.
 
 //Function to create a certain number of posts.
 function makePostItem(postCount) {
