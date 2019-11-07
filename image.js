@@ -1,8 +1,23 @@
 const body = document.querySelector("body"), //Concatenate the constant body to the element body.
-  postList = document.querySelector(".js-postList"), //Concatenate the postList body to the element .js-postList.
+  postList = document.querySelector(".js-postList"), //Concatenate the postList to the element .js-postList.
   imgHeight = 400, //Set post Height.
-  imgWidth = imgHeight; //Set post Width.
+  imgWidth = imgHeight, //Set post Width.
+  modal = document.querySelector(".modal"), //Concatenate the modal to the element .modal.
+  close = document.querySelector(".close"), //Concatenate the close to the element .close.
+  modalPost = modal.querySelector(".post-image"); //Concatenate the modalPost to the element .modalPost.
 let postSum = 9; //Count of Posts.
+
+//When the user clicks close button of the modal, close it
+close.onclick = function() {
+  modal.style.display = "none";
+};
+
+//When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 //Function to create a certain number of posts.
 function makePostItem(postCount) {
@@ -43,6 +58,12 @@ function paintPostList(postNumber) {
       let marginTop = (img.height - imgHeight) / 2; //Get distance to cut off.
       img.style.cssText = img.style.cssText + `margin-top: ${-marginTop}px;`; //Cut off height.
     }
+
+    //When the user click post, create pop up.
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalPost.src = img.src; //Send image to pop up, from post.
+    };
   };
   li.appendChild(img); //Put image object to item.
   postList.appendChild(li); //Put item to list.
